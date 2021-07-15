@@ -2,28 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
  
-//var h1 = React.createElement('h1', null, 'Hello World!')
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.launchClock()
+    this.state = {currentTime: (new Date()).toLocaleString()}
+  }
 
-class HelloWorld extends React.Component{   
-  constructor(proos) {
-    super(proos);
-    this.state = {
-      web: false
-    }
+  launchClock() {
+    setInterval(
+      () => {
+        console.log('Updating time...')
+        this.setState(
+          {currentTime: (new Date()).toLocaleString()}
+        )
+      }, 1000)
   }
 
   render() {
-    return (
-      <div>
-        <p>Your REST API URL is:
-          {(this.state.web) ? <a href="www.baidu.com">www.baidu.com</a> : <a href="www.google.com">www.google.com</a>}
-        </p>
-      </div>
-    )
+    console.log('Rendering Clock...')
+    return <div>{this.state.currentTime}</div>
   }
 }
 
 ReactDOM.render(
-  <HelloWorld></HelloWorld>,
+  <Clock/>,
   document.getElementById('content')
 )
