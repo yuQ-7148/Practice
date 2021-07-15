@@ -5,16 +5,18 @@ import './index.css';
 //var h1 = React.createElement('h1', null, 'Hello World!')
 
 class HelloWorld extends React.Component{   
-  getUrl() {
-    return 'http://webapplog.com'
+  constructor(proos) {
+    super(proos);
+    this.state = {
+      web: false
+    }
   }
+
   render() {
     return (
       <div>
         <p>Your REST API URL is:
-          <a href={this.getUrl()}>
-            {this.getUrl()}
-          </a>
+          {(this.state.web) ? <a href="www.baidu.com">www.baidu.com</a> : <a href="www.google.com">www.google.com</a>}
         </p>
       </div>
     )
